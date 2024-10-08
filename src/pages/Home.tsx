@@ -7,7 +7,7 @@ const Home = () => {
       <div className="mx-auto max-w-7xl ~py-6/12">
         <div>
           <h1 className="text-center ~text-2xl/4xl">Welcome to HotelRank</h1>
-          <p className="~mt-4/8 text-center max-w-[100ch] mx-auto">
+          <p className="~mt-4/8 text-center max-w-[100ch] mx-auto ~text-sm/base">
             Easily manage, rank, and organize your favourite hotels by brand.
             Add new hotels, update details, and filter by brands for a seamless
             experience. Your hotel data is safely stored and ready for you every
