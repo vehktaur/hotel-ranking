@@ -1,8 +1,28 @@
 /** @type {import('tailwindcss').Config} */
+
+import fluid, { extract, screens, fontSize } from "fluid-tailwind";
+
 export default {
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  content: { files: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"], extract },
   theme: {
-    extend: {}
+    screens,
+    fontSize,
+    extend: {
+      fontFamily: {
+        "open-sans": ['"Open Sans"', "sans-serif"],
+        "dm-sans": ['"DM Sans"', "sans-serif"],
+      },
+      screens: {
+        xxs: "20rem",
+        xs: "30rem",
+      },
+    },
   },
-  plugins: []
+  plugins: [
+    fluid,
+    require("tailwind-scrollbar")({
+      nocompatible: true,
+      preferredStrategy: "pseudoelements",
+    }),
+  ],
 };
