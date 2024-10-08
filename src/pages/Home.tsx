@@ -1,12 +1,28 @@
-import HotelList from '../components/HotelList';
+import BrandFilter from '../components/brand-filter';
+import HotelList from '../components/hotel-list';
 
 const Home = () => {
   return (
     <div className="px-5">
       <div className="mx-auto max-w-7xl ~py-6/12">
-        <h1 className="text-center ~text-2xl/4xl">Welcome to HotelRank</h1>
+        <div>
+          <h1 className="text-center ~text-2xl/4xl">Welcome to HotelRank</h1>
+          <p className="~mt-4/8 text-center max-w-[100ch] mx-auto">
+            Easily manage, rank, and organize your favourite hotels by brand.
+            Add new hotels, update details, and filter by brands for a seamless
+            experience. Your hotel data is safely stored and ready for you every
+            time you return. Discover, organise, and rank with HotelRank!
+          </p>
+        </div>
 
-        <HotelList />
+        <div className="~mt-8/12">
+          <div className="flex justify-between items-center">
+            <h2 className="~text-lg/2xl font-medium">Your Favourite Hotels</h2>
+
+            <BrandFilter />
+          </div>
+          <HotelList />
+        </div>
       </div>
     </div>
   );

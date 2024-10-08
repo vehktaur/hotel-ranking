@@ -4,5 +4,7 @@ export interface Hotel {
   city: string;
   country: string;
   address: string;
-  brand: string;
+  brand?: string;
+  rating: number;
+  review?: string;
 }

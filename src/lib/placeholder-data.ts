@@ -7,7 +7,9 @@ export const hotels: Hotel[] = [
     city: 'London',
     country: 'United Kingdom',
     address: '123 Kings Street, London, UK',
-    brand: 'LuxuryStay'
+    brand: 'LuxuryStay',
+    rating: 4.8,
+    review: 'Great location, but pricey.'
   },
   {
     id: 2,
@@ -15,7 +17,9 @@ export const hotels: Hotel[] = [
     city: 'Miami',
     country: 'United States',
     address: '456 Ocean Drive, Miami, FL',
-    brand: 'Sunset Resorts'
+    brand: 'Sunset Resorts',
+    rating: 4.5,
+    review: 'Beautiful ocean views!'
   },
   {
     id: 3,
@@ -23,7 +27,9 @@ export const hotels: Hotel[] = [
     city: 'Aspen',
     country: 'United States',
     address: '789 Ski Ave, Aspen, CO',
-    brand: 'Peak Hospitality'
+    brand: 'Peak Hospitality',
+    rating: 4.7,
+    review: 'Perfect for a winter getaway!'
   },
   {
     id: 4,
@@ -31,7 +37,9 @@ export const hotels: Hotel[] = [
     city: 'Berlin',
     country: 'Germany',
     address: '321 Urban Road, Berlin, Germany',
-    brand: 'MetroHotels'
+    brand: 'MetroHotels',
+    rating: 4.2,
+    review: 'Conveniently located in the heart of the city.'
   },
   {
     id: 5,
@@ -39,7 +47,9 @@ export const hotels: Hotel[] = [
     city: 'Amsterdam',
     country: 'Netherlands',
     address: '654 Canal Street, Amsterdam, Netherlands',
-    brand: 'EuroStay'
+    brand: 'EuroStay',
+    rating: 4.6,
+    review: 'Charming location by the canals!'
   },
   {
     id: 6,
@@ -47,7 +57,9 @@ export const hotels: Hotel[] = [
     city: 'Dubai',
     country: 'United Arab Emirates',
     address: '789 Palm Avenue, Dubai, UAE',
-    brand: 'Desert Dwellings'
+    brand: 'Desert Dwellings',
+    rating: 4.9,
+    review: 'An oasis in the desert! Fantastic experience.'
   },
   {
     id: 7,
@@ -55,7 +67,9 @@ export const hotels: Hotel[] = [
     city: 'Phuket',
     country: 'Thailand',
     address: '432 Beach Road, Phuket, Thailand',
-    brand: 'Island Escapes'
+    brand: 'Island Escapes',
+    rating: 4.7,
+    review: 'Beautiful resort with excellent service.'
   },
   {
     id: 8,
@@ -63,7 +77,9 @@ export const hotels: Hotel[] = [
     city: 'Zurich',
     country: 'Switzerland',
     address: '987 Alpine Way, Zurich, Switzerland',
-    brand: 'SwissComfort'
+    brand: 'SwissComfort',
+    rating: 4.3,
+    review: 'A cozy winter retreat with great views.'
   },
   {
     id: 9,
@@ -71,7 +87,9 @@ export const hotels: Hotel[] = [
     city: 'Tokyo',
     country: 'Japan',
     address: '123 Neon Boulevard, Tokyo, Japan',
-    brand: 'Zen Retreats'
+    brand: 'Zen Retreats',
+    rating: 4.8,
+    review: 'Modern design in the heart of Tokyo.'
   },
   {
     id: 10,
@@ -79,6 +97,8 @@ export const hotels: Hotel[] = [
     city: 'Queenstown',
     country: 'New Zealand',
     address: '321 Lake View Road, Queenstown, NZ',
-    brand: 'NatureLuxe'
+    brand: 'NatureLuxe',
+    rating: 4.9,
+    review: 'Peaceful and beautiful lakeside view!'
   }
 ];
