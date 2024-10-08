@@ -16,7 +16,7 @@ const Home = () => {
         </div>
 
         <div className="~mt-8/12">
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center flex-wrap-reverse gap-4">
             <h2 className="~text-lg/2xl font-medium">Your Favourite Hotels</h2>
 
             <BrandFilter />
