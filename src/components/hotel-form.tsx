@@ -126,6 +126,7 @@ const HotelForm = ({
               type="number"
               placeholder="Rate out of 5"
               max={5}
+              step={0.1}
               min={0}
               {...register('rating', {
                 required: true,
