@@ -5,8 +5,8 @@ export default function ErrorPage() {
   console.error(error);
 
   return (
-    <div className="grid place-items-center px-5">
-      <div className="space-y-5 max-w-7xl mx-auto text-center">
+    <div className="grid place-items-center px-5 min-h-screen">
+      <div className="~space-y-5/10 max-w-7xl mx-auto text-center">
         <h1 className="font-bold ~text-xl/4xl">Oops!</h1>
         <p>Sorry, an unexpected error has occurred.</p>
         <p className="text-gray-500 italic">

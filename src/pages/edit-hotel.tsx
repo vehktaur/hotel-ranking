@@ -1,18 +1,33 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Hotel } from '../lib/definitions';
+import { hotels } from '../lib/placeholder-data';
+import { useParams } from 'react-router-dom';
 
-const AddHotel = () => {
-  const { register, handleSubmit, reset } = useForm<Hotel>();
+const EditHotel = () => {
+  const { id } = useParams();
+  const hotel = hotels.find((hotel) => hotel.id === id);
+  const { register, handleSubmit, reset } = useForm<Hotel>({
+    defaultValues: {
+      name: hotel?.name,
+      city: hotel?.city,
+      country: hotel?.country,
+      address: hotel?.address,
+      rating: hotel?.rating,
+      review: hotel?.review
+    }
+  });
 
   const onSubmit: SubmitHandler<Hotel> = (data) => {
     console.log(data);
     reset();
   };
+
+  console.log(hotel)
   return (
     <div className="p-5">
       <div className="max-w-md mx-auto">
         <h2 className="~text-xl/3xl font-bold ~mb-5/8 text-center">
-          Add A New Favourite Hotel
+          Edit Hotel
         </h2>
         <form className="~text-sm/base" onSubmit={handleSubmit(onSubmit)}>
           <div className="~space-y-2/4">
@@ -100,4 +115,4 @@ const AddHotel = () => {
     </div>
   );
 };
-export default AddHotel;
+export default EditHotel;

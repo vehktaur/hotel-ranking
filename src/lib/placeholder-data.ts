@@ -2,7 +2,7 @@ import { Hotel } from './definitions';
 
 export const hotels: Hotel[] = [
   {
-    id: 1,
+    id: '1',
     name: 'Grand Palace Hotel',
     city: 'London',
     country: 'United Kingdom',
@@ -12,7 +12,7 @@ export const hotels: Hotel[] = [
     review: 'Great location, but pricey.'
   },
   {
-    id: 2,
+    id: '2',
     name: 'Oceanview Resort',
     city: 'Miami',
     country: 'United States',
@@ -22,7 +22,7 @@ export const hotels: Hotel[] = [
     review: 'Beautiful ocean views!'
   },
   {
-    id: 3,
+    id: '3',
     name: 'Mountain Retreat',
     city: 'Aspen',
     country: 'United States',
@@ -32,7 +32,7 @@ export const hotels: Hotel[] = [
     review: 'Perfect for a winter getaway!'
   },
   {
-    id: 4,
+    id: '4',
     name: 'City Centre Inn',
     city: 'Berlin',
     country: 'Germany',
@@ -42,7 +42,7 @@ export const hotels: Hotel[] = [
     review: 'Conveniently located in the heart of the city.'
   },
   {
-    id: 5,
+    id: '5',
     name: 'Riverside Lodge',
     city: 'Amsterdam',
     country: 'Netherlands',
@@ -52,7 +52,7 @@ export const hotels: Hotel[] = [
     review: 'Charming location by the canals!'
   },
   {
-    id: 6,
+    id: '6',
     name: 'Desert Oasis',
     city: 'Dubai',
     country: 'United Arab Emirates',
@@ -62,7 +62,7 @@ export const hotels: Hotel[] = [
     review: 'An oasis in the desert! Fantastic experience.'
   },
   {
-    id: 7,
+    id: '7',
     name: 'Tropical Paradise Resort',
     city: 'Phuket',
     country: 'Thailand',
@@ -72,7 +72,7 @@ export const hotels: Hotel[] = [
     review: 'Beautiful resort with excellent service.'
   },
   {
-    id: 8,
+    id: '8',
     name: 'Snowy Peaks Hotel',
     city: 'Zurich',
     country: 'Switzerland',
@@ -82,7 +82,7 @@ export const hotels: Hotel[] = [
     review: 'A cozy winter retreat with great views.'
   },
   {
-    id: 9,
+    id: '9',
     name: 'Urban Escape',
     city: 'Tokyo',
     country: 'Japan',
@@ -92,7 +92,7 @@ export const hotels: Hotel[] = [
     review: 'Modern design in the heart of Tokyo.'
   },
   {
-    id: 10,
+    id: '10',
     name: 'Lakeside Resort',
     city: 'Queenstown',
     country: 'New Zealand',

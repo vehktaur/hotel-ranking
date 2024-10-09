@@ -1,5 +1,5 @@
 export interface Hotel {
-  id: number | string;
+  id: string;
   name: string;
   city: string;
   country: string;
