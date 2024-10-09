@@ -13,10 +13,17 @@ export interface Hotel {
 
 export interface HotelsContextType {
   hotels: Hotel[];
-  dispatch: Dispatch<HotelAction>;
+  dispatchHotels: Dispatch<HotelAction>;
+  brands: string[];
+  dispatchBrands: Dispatch<BrandAction>;
 }
 
 export type HotelAction =
   | { type: 'add'; newHotel: Hotel }
   | { type: 'edit'; newHotel: Hotel }
-  | { type: 'delete'; id: string };
+  | { type: 'delete'; id: string }
+  | { type: 'removeBrandFromHotels'; brand: string };
+
+export type BrandAction =
+  | { type: 'add'; newBrand: string }
+  | { type: 'delete'; brand: string };

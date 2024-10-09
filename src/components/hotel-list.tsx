@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import HotelCard from './hotel-card';
 import { HotelsContext } from '../context/hotel-provider';
+import { useSearchParams } from 'react-router-dom';
 
 const HotelList = () => {
   const context = useContext(HotelsContext);
@@ -10,7 +11,12 @@ const HotelList = () => {
   }
 
   const { hotels } = context;
-  const sortedHotels = hotels.sort((a, b) => b.rating - a.rating);
+  const [searchParams] = useSearchParams();
+
+  const brandFilter = searchParams.get('brand');
+
+  const filteredHotels = brandFilter ? hotels.filter(hotel => hotel.brand === brandFilter) : hotels;
+  const sortedHotels = filteredHotels.sort((a, b) => b.rating - a.rating);
   return (
     <div>
       <div className="pt-4">

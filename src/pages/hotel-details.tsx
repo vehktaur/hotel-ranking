@@ -7,6 +7,8 @@ import { HotelsContext } from '../context/hotel-provider';
 
 const HotelDetails = () => {
   const { name } = useParams();
+  const id = name?.split('__').pop();
+
   const context = useContext(HotelsContext);
 
   if (!context) {
@@ -15,7 +17,9 @@ const HotelDetails = () => {
 
   const { hotels } = context;
 
-  const hotel = hotels.find((hotel) => hotel.name === name);
+  const hotel = hotels.find((hotel) => hotel.id === id);
+
+  console.log(id);
 
   if (!hotel) {
     return (
@@ -41,7 +45,7 @@ const HotelDetails = () => {
               <strong>Address:</strong> {hotel.address}
             </p>
             <p className="~text-base/lg">
-              <strong>Brand:</strong> {hotel.brand}
+              <strong>Brand:</strong> {hotel.brand ? hotel.brand : 'None'}
             </p>
           </div>
           {/* Hotel Rating */}

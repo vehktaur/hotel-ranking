@@ -102,3 +102,16 @@ export const hotels: Hotel[] = [
     review: 'Peaceful and beautiful lakeside view!'
   }
 ];
+
+export const brands = [
+  'LuxuryStay',
+  'Sunset Resorts',
+  'Peak Hospitality',
+  'MetroHotels',
+  'EuroStay',
+  'Desert Dwellings',
+  'Island Escapes',
+  'SwissComfort',
+  'Zen Retreats',
+  'NatureLuxe'
+]

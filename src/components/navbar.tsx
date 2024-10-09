@@ -8,7 +8,7 @@ const Navbar = () => {
           <Link to="/"> HotelRank</Link>
         </h3>
 
-        <Link className='block border border-[#333] hover:bg-[#333] hover:text-white transition-colors duration-300 rounded-full ~px-2/4 ~py-1/2 ~text-[0.9rem]/base' to='/add-hotel'>Add Hotel</Link>
+        <Link className='block border border-[#333] hover:bg-[#333] hover:text-white transition-colors duration-300 rounded-full ~px-2/4 ~py-1/2 ~text-[0.9rem]/base font-medium' to='/add-hotel'>Add Hotel</Link>
       </div>
     </nav>
   );

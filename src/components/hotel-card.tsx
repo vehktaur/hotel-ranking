@@ -5,7 +5,7 @@ import { MapPinIcon } from '@heroicons/react/16/solid';
 
 const HotelCard = ({ hotel }: { hotel: Hotel }) => {
   return (
-    <Link className="block" to={`/${hotel.name}`}>
+    <Link className="block" to={`/${hotel.name}__${hotel.id}`}>
       <div className="h-full border border-[#ccc] hover:shadow-md cursor-pointer transition-all duration-500 rounded-xl px-5 py-6 ~text-sm/base">
         <div className="flex flex-col h-full justify-between gap-3">
           <h3 className="~text-lg/xl font-medium">{hotel.name}</h3>
@@ -15,13 +15,17 @@ const HotelCard = ({ hotel }: { hotel: Hotel }) => {
             <span className="~text-xs/sm">{hotel.country}</span>
           </p>
 
-          <address className="text-sm flex items-center gap-2"><MapPinIcon className='w-4'/> {hotel.address}</address>
+          <address className="text-sm flex items-center gap-2">
+            <MapPinIcon className="w-4" /> {hotel.address}
+          </address>
 
-          <p className="flex justify-start">
-            <span className="border px-2 py-1 rounded-lg ~text-xs/sm text-white bg-slate-700">
-              {hotel.brand}
-            </span>
-          </p>
+          {hotel.brand && (
+            <p className="flex justify-start">
+              <span className="border px-2 py-1 rounded-lg ~text-xs/sm text-white bg-slate-700">
+                {hotel.brand}
+              </span>
+            </p>
+          )}
 
           <p
             className="flex items-center justify-end gap-1"

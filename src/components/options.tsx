@@ -20,7 +20,7 @@ const Options = ({ id }: { id: string }) => {
     throw new Error('NestedComponent must be used within a HotelProvider');
   }
 
-  const { dispatch } = context;
+  const { dispatchHotels } = context;
 
   //Handle Toggle Effects
   const handleClick = (): void => {
@@ -28,7 +28,7 @@ const Options = ({ id }: { id: string }) => {
   };
 
   const deleteHotel = () => {
-    dispatch({ type: 'delete', id });
+    dispatchHotels({ type: 'delete', id });
     console.log('deleted');
     setShowConfirmation(false);
   };
@@ -92,50 +92,56 @@ const Options = ({ id }: { id: string }) => {
           </div>
         </div>
       )}
-
-      <button
-        title="options"
-        onClick={handleClick}
-        className="grid place-items-center"
-      >
-        <div className="hidden sm:flex ~gap-4/8 items-center">
-          <Link
-            to={`/edit-hotel/${id}`}
-            className="flex w-full items-center gap-1.5 py-2 text-left ~text-sm/base transition-transform duration-500 will-change-transform hover:scale-[103%] hover:font-medium"
-          >
-            <PencilSquareIcon className="w-6" /> Edit
-          </Link>
-          <button
-            onClick={() => {
-              setShowConfirmation(true);
-              setIsOpen(false);
-            }}
-            className="flex w-full items-center gap-1.5 py-2 text-left ~text-sm/base text-red-600 transition-transform duration-500 will-change-transform hover:scale-[103%] hover:font-medium"
-          >
-            <TrashIcon className="w-6" /> Delete
-          </button>
-        </div>
-        <EllipsisHorizontalIcon className="w-5 text-stone-950 sm:hidden" />
-      </button>
-      {isOpen && (
-        <div className="absolute right-0 z-[2] grid w-[7.5rem] justify-items-start divide-y rounded-lg border border-gray-200 bg-white px-3 py-1 sm:hidden">
-          <Link
-            to={`/edit-hotel/${id}`}
-            className="flex w-full items-center gap-1.5 py-2 text-left text-sm transition-transform duration-500 will-change-transform hover:scale-[103%] hover:font-medium"
-          >
-            <PencilSquareIcon className="w-4" /> Edit
-          </Link>
-          <button
-            onClick={() => {
-              setShowConfirmation(true);
-              setIsOpen(false);
-            }}
-            className="flex w-full items-center gap-1.5 py-2 text-left text-sm text-red-600 transition-transform duration-500 will-change-transform hover:scale-[103%] hover:font-medium"
-          >
-            <TrashIcon className="w-4" /> Delete
-          </button>
-        </div>
-      )}
+      <div className="hidden sm:flex ~gap-4/8 items-center">
+        <Link
+          title="Edit"
+          to={`/edit-hotel/${id}`}
+          className="flex w-full items-center gap-1.5 py-2 text-left ~text-sm/base transition-transform duration-500 will-change-transform hover:scale-[103%] hover:font-medium"
+        >
+          <PencilSquareIcon className="w-6" /> Edit
+        </Link>
+        <button
+          title="Delete"
+          onClick={() => {
+            setShowConfirmation(true);
+            setIsOpen(false);
+          }}
+          className="flex w-full items-center gap-1.5 py-2 text-left ~text-sm/base text-red-600 transition-transform duration-500 will-change-transform hover:scale-[103%] hover:font-medium"
+        >
+          <TrashIcon className="w-6" /> Delete
+        </button>
+      </div>
+      <div className="sm:hidden">
+        {' '}
+        <button
+          title="options"
+          onClick={handleClick}
+          className="grid place-items-center"
+        >
+          <EllipsisHorizontalIcon className="w-5 text-stone-950" />
+        </button>
+        {isOpen && (
+          <div className="absolute right-0 z-[2] grid w-[7.5rem] justify-items-start divide-y rounded-lg border border-gray-200 bg-white px-3 py-1 sm:hidden">
+            <Link
+              title="Edit"
+              to={`/edit-hotel/${id}`}
+              className="flex w-full items-center gap-1.5 py-2 text-left text-sm transition-transform duration-500 will-change-transform hover:scale-[103%] hover:font-medium"
+            >
+              <PencilSquareIcon className="w-4" /> Edit
+            </Link>
+            <button
+              title="Delete"
+              onClick={() => {
+                setShowConfirmation(true);
+                setIsOpen(false);
+              }}
+              className="flex w-full items-center gap-1.5 py-2 text-left text-sm text-red-600 transition-transform duration-500 will-change-transform hover:scale-[103%] hover:font-medium"
+            >
+              <TrashIcon className="w-4" /> Delete
+            </button>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
