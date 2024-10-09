@@ -1,68 +1,28 @@
 import { createContext, useEffect, useReducer } from 'react';
 import { brands, hotels } from '../lib/placeholder-data';
-import {
-  BrandAction,
-  Hotel,
-  HotelAction,
-  HotelsContextType
-} from '../lib/definitions';
+import { Hotel, HotelsContextType } from '../lib/definitions';
+import { brandsReducer, hotelsReducer } from '../lib/reducer';
 
-const hotelsReducer = (hotelsState: Hotel[], action: HotelAction): Hotel[] => {
-  switch (action.type) {
-    case 'add':
-      return [...hotelsState, action.newHotel];
-
-    case 'edit':
-      return hotelsState.map((olHotel) =>
-        olHotel.id === action.newHotel!.id ? action.newHotel : olHotel
-      );
-
-    case 'delete':
-      return hotelsState.filter((hotel) => hotel.id !== action.id);
-
-    case 'removeBrandFromHotels':
-      return hotelsState.map((hotel) =>
-        hotel.brand === action.brand ? { ...hotel, brand: undefined } : hotel
-      );
-
-    default:
-      return hotelsState;
-  }
-};
-
-const brandsReducer = (
-  brandsState: string[],
-  action: BrandAction
-): string[] => {
-  switch (action.type) {
-    case 'add':
-      const updatedBrands = new Set(brandsState);
-      updatedBrands.add(action.newBrand);
-      return Array.from(updatedBrands);
-
-    case 'delete':
-      const reducedBrand = new Set(brandsState);
-      reducedBrand.delete(action.brand);
-      return Array.from(reducedBrand);
-  }
-};
-
+// Create a context to manage hotels and brands state
 export const HotelsContext = createContext<HotelsContextType | undefined>(
   undefined
 );
 
-// Use localStorage to initialize the hotelsState
+// Initialize hotels state from localStorage or fallback to default data
 const hotelsInitializer = (): Hotel[] => {
   const storedHotels = localStorage.getItem('hotels');
   return storedHotels ? JSON.parse(storedHotels) : hotels;
 };
 
+// Initialize brands state from localStorage or fallback to default data
 const brandsInitializer = (): string[] => {
   const storedBrands = localStorage.getItem('brands');
   return storedBrands ? JSON.parse(storedBrands) : brands;
 };
 
+// Global Context provider component for hotels and brands
 const HotelProvider = ({ children }: { children: React.ReactNode }) => {
+  //Create state for hotels and Brands
   const [hotelsState, dispatchHotels] = useReducer(
     hotelsReducer,
     [],
@@ -74,10 +34,12 @@ const HotelProvider = ({ children }: { children: React.ReactNode }) => {
     brandsInitializer
   );
 
+  // Persist the hotels state in localStorage whenever it changes
   useEffect(() => {
     localStorage.setItem('hotels', JSON.stringify(hotelsState));
   }, [hotelsState]);
 
+  // Persist the brands state in localStorage whenever it changes
   useEffect(() => {
     localStorage.setItem('brands', JSON.stringify(Array.from(brandsState)));
   }, [brandsState]);

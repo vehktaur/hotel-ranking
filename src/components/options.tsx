@@ -4,9 +4,9 @@ import {
   TrashIcon
 } from '@heroicons/react/24/outline';
 
-import { RefObject, useContext, useEffect, useRef, useState } from 'react';
+import { RefObject, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { HotelsContext } from '../context/hotel-provider';
+import { useHotels } from '../hooks/hooks';
 
 const Options = ({ id }: { id: string }) => {
   //Define state variables
@@ -14,13 +14,7 @@ const Options = ({ id }: { id: string }) => {
   const [showConfirmation, setShowConfirmation] = useState(false);
   const dropdownRef: RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
 
-  const context = useContext(HotelsContext);
-
-  if (!context) {
-    throw new Error('NestedComponent must be used within a HotelProvider');
-  }
-
-  const { dispatchHotels } = context;
+  const { dispatchHotels } = useHotels();
 
   //Handle Toggle Effects
   const handleClick = (): void => {

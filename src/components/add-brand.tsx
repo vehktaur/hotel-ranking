@@ -1,14 +1,10 @@
-import { useContext, useState } from 'react';
-import { HotelsContext } from '../context/hotel-provider';
+import { useState } from 'react';
+import { useBrands } from '../hooks/hooks';
 
 const AddBrand = () => {
-  const context = useContext(HotelsContext);
   const [newBrand, setNewBrand] = useState<string>();
-  if (!context) {
-    throw new Error('Component should be used within Hotel Provider');
-  }
 
-  const { dispatchBrands } = context;
+  const { dispatchBrands } = useBrands();
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();

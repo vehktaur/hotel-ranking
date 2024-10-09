@@ -1,16 +1,10 @@
-import { useContext } from 'react';
-import { HotelsContext } from '../context/hotel-provider';
-import { reduce } from '../lib/utils';
+import { useBrands, useHotels } from '../hooks/hooks';
+
 import AddBrand from './add-brand';
 
 const ManageBrands = () => {
-  const context = useContext(HotelsContext);
-
-  if (!context) {
-    throw new Error('Component is not within the Hotels Provider');
-  }
-
-  const { brands, dispatchBrands, dispatchHotels } = context;
+  const { brands, dispatchBrands } = useBrands();
+  const { dispatchHotels } = useHotels();
 
   const deleteBrand = (brand: string) => {
     dispatchBrands({ type: 'delete', brand });
@@ -28,7 +22,7 @@ const ManageBrands = () => {
 
         <h3 className="~text-xl/lg font-medium ~mb-2/3">All Brands</h3>
         <ol className="list-decimal ps-4 ~text-sm/base">
-          {reduce(brands).map((brand: string) => (
+          {brands.map((brand: string) => (
             <li key={brand} className=" py-2 ps-2 border-b">
               {brand}
 

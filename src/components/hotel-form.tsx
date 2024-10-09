@@ -1,9 +1,8 @@
 import { useFormContext } from 'react-hook-form';
 import { Hotel } from '../lib/definitions';
-import { HotelsContext } from '../context/hotel-provider';
-import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronLeftIcon, PlusIcon } from '@heroicons/react/24/outline';
+import { useBrands } from '../hooks/hooks';
 
 const HotelForm = ({
   onSubmit,
@@ -16,11 +15,7 @@ const HotelForm = ({
 }) => {
   const { register, resetField } = useFormContext();
 
-  const context = useContext(HotelsContext);
-  if (!context) {
-    throw new Error('NestedComponent must be used within a HotelProvider');
-  }
-  const { brands } = context;
+  const { brands } = useBrands();
 
   return (
     <div className="max-w-md mx-auto">

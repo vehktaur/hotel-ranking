@@ -1,5 +1,6 @@
 import { Hotel } from './definitions';
 
+//Place-holder data for the hotels
 export const hotels: Hotel[] = [
   {
     id: '1',
@@ -103,6 +104,7 @@ export const hotels: Hotel[] = [
   }
 ];
 
+//Place-holder data for the brands
 export const brands = [
   'LuxuryStay',
   'Sunset Resorts',

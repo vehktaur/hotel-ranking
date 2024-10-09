@@ -1,16 +1,9 @@
-import { useContext } from 'react';
 import HotelCard from './hotel-card';
-import { HotelsContext } from '../context/hotel-provider';
 import { useSearchParams } from 'react-router-dom';
+import { useHotels } from '../hooks/hooks';
 
 const HotelList = () => {
-  const context = useContext(HotelsContext);
-
-  if (!context) {
-    throw new Error('NestedComponent must be used within a HotelProvider');
-  }
-
-  const { hotels } = context;
+  const { hotels } = useHotels();
   const [searchParams] = useSearchParams();
 
   const brandFilter = searchParams.get('brand');
@@ -29,7 +22,7 @@ const HotelList = () => {
             ))}
         </div>
       ) : (
-        <p className='my-12 ~text-base/lg'>
+        <p className="my-12 ~text-base/lg">
           <strong>No Hotels Found</strong>
         </p>
       )}
