@@ -7,16 +7,7 @@ export default {
   theme: {
     screens,
     fontSize,
-    extend: {
-      fontFamily: {
-        'open-sans': ['"Open Sans"', 'sans-serif'],
-        'dm-sans': ['"DM Sans"', 'sans-serif']
-      },
-      screens: {
-        xxs: '20rem',
-        xs: '30rem'
-      }
-    }
+    extend: {}
   },
   plugins: [
     fluid,

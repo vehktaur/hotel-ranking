@@ -8,20 +8,23 @@ import { RefObject, useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useHotels } from '../hooks/hooks';
 
+// Component for hotel management options (edit/delete)
 const Options = ({ id }: { id: string }) => {
   //Define state variables
   const [isOpen, setIsOpen] = useState(false);
   const [showConfirmation, setShowConfirmation] = useState(false);
-  const dropdownRef: RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
-  const { dispatchHotels } = useHotels();
+  const dropdownRef: RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null); // References for detecting clicks outside the dropdown
 
-  //Handle Toggle Effects
+  //Hook to Manipulate Hotels Data
+  const { dispatchHotels } = useHotels();
+  const navigate = useNavigate();
+
+  // Toggle dropdown visibility
   const handleClick = (): void => {
     setIsOpen((prev) => !prev);
   };
 
-  const navigate = useNavigate();
-
+  // Delete hotel action
   const deleteHotel = () => {
     dispatchHotels({ type: 'delete', id });
     console.log('deleted');
@@ -54,6 +57,7 @@ const Options = ({ id }: { id: string }) => {
 
   return (
     <div className="relative" ref={dropdownRef}>
+      {/* Confirmation Modal */}
       {showConfirmation && (
         <div
           title=""
@@ -88,6 +92,8 @@ const Options = ({ id }: { id: string }) => {
           </div>
         </div>
       )}
+
+      {/* Desktop Options */}
       <div className="hidden sm:flex ~gap-4/8 items-center">
         <Link
           title="Edit"
@@ -107,8 +113,9 @@ const Options = ({ id }: { id: string }) => {
           <TrashIcon className="w-6" /> Delete
         </button>
       </div>
+
+      {/* Mobile Options */}
       <div className="sm:hidden">
-        {' '}
         <button
           title="options"
           onClick={handleClick}
