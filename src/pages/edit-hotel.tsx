@@ -2,21 +2,21 @@ import HotelForm from '../components/hotel-form';
 import ManageBrands from '../components/manage-brands';
 import { useForm, FormProvider, SubmitHandler } from 'react-hook-form';
 import { Hotel } from '../lib/definitions';
-import { useContext } from 'react';
-import { HotelsContext } from '../context/hotel-provider';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useHotels } from '../hooks/hooks';
 
+// Component for editing an existing hotel's details
 const EditHotel = () => {
   const { id } = useParams();
 
-  const context = useContext(HotelsContext);
-  if (!context) {
-    throw new Error('NestedComponent must be used within a HotelProvider');
-  }
-  const { hotels, dispatchHotels } = context;
+  // Access hotels state for managing hotel data
+  const { hotels, dispatchHotels } = useHotels();
   const navigate = useNavigate();
+
+  // Find the hotel by ID from context
   const hotel = hotels.find((hotel) => hotel.id === id);
 
+  // Initialize form with hotel's current details as default values
   const methods = useForm<Hotel>({
     defaultValues: {
       id: hotel?.id,
@@ -29,8 +29,8 @@ const EditHotel = () => {
     }
   });
 
+  // Handle form submission
   const onSubmit: SubmitHandler<Hotel> = (data) => {
-    console.log(data);
     dispatchHotels({ type: 'edit', newHotel: data });
     navigate(`/${hotel?.name}__${hotel?.id}`);
   };
@@ -38,6 +38,7 @@ const EditHotel = () => {
   return (
     <div className="p-5">
       <FormProvider {...methods}>
+        {/* Hotel form for editing details */}
         <HotelForm
           onSubmit={methods.handleSubmit(onSubmit)}
           edit={true}
@@ -45,6 +46,7 @@ const EditHotel = () => {
         />
       </FormProvider>
 
+      {/* Component to manage associated brands */}
       <ManageBrands />
     </div>
   );

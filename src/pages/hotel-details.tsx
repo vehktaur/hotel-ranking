@@ -2,29 +2,20 @@ import { useParams } from 'react-router-dom';
 import { StarIcon } from '@heroicons/react/20/solid';
 import Map from '../components/map';
 import Options from '../components/options';
-import { useContext } from 'react';
-import { HotelsContext } from '../context/hotel-provider';
+import { useHotels } from '../hooks/hooks';
 
 const HotelDetails = () => {
   const { name } = useParams();
   const id = name?.split('__').pop();
 
-  const context = useContext(HotelsContext);
-
-  if (!context) {
-    throw new Error('NestedComponent must be used within a HotelProvider');
-  }
-
-  const { hotels } = context;
+  const { hotels } = useHotels();
 
   const hotel = hotels.find((hotel) => hotel.id === id);
-
-  console.log(id);
 
   if (!hotel) {
     return (
       <div className="py-12 text-center">
-        <strong>Hotel not found</strong>
+        <strong>Hotel Not Found</strong>
       </div>
     );
   }
@@ -33,10 +24,13 @@ const HotelDetails = () => {
       {/* Hotel Details Section */}
       <div className="max-w-7xl mx-auto ~mt-6/12">
         <div className="border p-5 rounded-lg border-[#666]">
+          {/* Hotel Name and Options */}
           <div className="flex justify-between items-center ~mb-7/12">
             <h1 className="~text-2xl/4xl font-bold">{hotel.name}</h1>
             <Options id={hotel.id} />
           </div>
+
+          {/* Hotel Information */}
           <div>
             <p className="~text-base/lg">
               <strong>Location:</strong> {hotel.city}, {hotel.country}
@@ -48,6 +42,7 @@ const HotelDetails = () => {
               <strong>Brand:</strong> {hotel.brand ? hotel.brand : 'None'}
             </p>
           </div>
+
           {/* Hotel Rating */}
           <div className="flex items-center gap-1 my-4">
             <p className="~text-base/lg">Rating:</p>
@@ -63,6 +58,7 @@ const HotelDetails = () => {
               ({hotel.rating}/5)
             </span>
           </div>
+
           {/* Hotel Review */}
           <p className="~text-base/lg">
             <strong>Review:</strong> {hotel.review}

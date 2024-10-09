@@ -27,7 +27,6 @@ const Options = ({ id }: { id: string }) => {
   // Delete hotel action
   const deleteHotel = () => {
     dispatchHotels({ type: 'delete', id });
-    console.log('deleted');
     navigate('/');
     setShowConfirmation(false);
   };
