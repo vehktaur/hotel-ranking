@@ -8,7 +8,10 @@ const AddBrand = () => {
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (newBrand && newBrand !== '') dispatchBrands({ type: 'add', newBrand });
+    if (newBrand && newBrand !== '') {
+      dispatchBrands({ type: 'add', newBrand });
+    }
+    setNewBrand('');
   };
   return (
     <div>
