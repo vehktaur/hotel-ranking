@@ -29,7 +29,7 @@ const HotelList = () => {
             ))}
         </div>
       ) : (
-        <p>
+        <p className='my-12 ~text-base/lg'>
           <strong>No Hotels Found</strong>
         </p>
       )}
