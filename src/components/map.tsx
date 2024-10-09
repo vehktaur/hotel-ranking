@@ -2,6 +2,8 @@ import { LatLngExpression } from 'leaflet';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import { setKey, fromAddress } from 'react-geocode';
 import 'leaflet/dist/leaflet.css';
+import markerIconPng from 'leaflet/dist/images/marker-icon.png';
+import { Icon } from 'leaflet';
 import { useEffect, useState } from 'react';
 
 const Map = ({ address, name }: { address: string; name: string }) => {
@@ -40,7 +42,16 @@ const Map = ({ address, name }: { address: string; name: string }) => {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker position={position!}>
+        <Marker
+          position={position!}
+          icon={
+            new Icon({
+              iconUrl: markerIconPng,
+              iconSize: [25, 41],
+              iconAnchor: [12, 41]
+            })
+          }
+        >
           <Popup>{name}</Popup>
         </Marker>
       </MapContainer>
