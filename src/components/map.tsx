@@ -6,15 +6,18 @@ import markerIconPng from 'leaflet/dist/images/marker-icon.png';
 import { Icon } from 'leaflet';
 import { useEffect, useState } from 'react';
 
+// Map component for rendering a map based on address
 const Map = ({ address, name }: { address: string; name: string }) => {
+  // State to store the map position based on geocoding results
   const [position, setPosition] = useState<LatLngExpression | undefined>(
     undefined
   );
 
+  // Set API key for geocoding service
   const apiKey = import.meta.env.VITE_MAP_API_KEY;
-
   setKey(apiKey || '');
 
+  // Fetch and set the position using the provided address
   useEffect(() => {
     const getPosition = async () => {
       try {
@@ -29,8 +32,9 @@ const Map = ({ address, name }: { address: string; name: string }) => {
     };
 
     getPosition();
-  }, [position]);
+  }, [address]);
 
+  // Show a loading message until position is determined
   if (!position) {
     return <div className="h-[30rem] grid place-items-center">Loading...</div>;
   }
