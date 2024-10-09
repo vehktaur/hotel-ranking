@@ -15,24 +15,24 @@ const HotelList = () => {
 
   const brandFilter = searchParams.get('brand');
 
-  const filteredHotels = brandFilter ? hotels.filter(hotel => hotel.brand === brandFilter) : hotels;
+  const filteredHotels = brandFilter
+    ? hotels.filter((hotel) => hotel.brand === brandFilter)
+    : hotels;
   const sortedHotels = filteredHotels.sort((a, b) => b.rating - a.rating);
   return (
-    <div>
-      <div className="pt-4">
-        {sortedHotels && sortedHotels.length > 0 ? (
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
-            {sortedHotels &&
-              sortedHotels.map((hotel) => (
-                <HotelCard key={hotel.id} hotel={hotel} />
-              ))}
-          </div>
-        ) : (
-          <p>
-            <strong>No Hotels Found</strong>
-          </p>
-        )}
-      </div>
+    <div className="pt-4">
+      {sortedHotels && sortedHotels.length > 0 ? (
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
+          {sortedHotels &&
+            sortedHotels.map((hotel) => (
+              <HotelCard key={hotel.id} hotel={hotel} />
+            ))}
+        </div>
+      ) : (
+        <p>
+          <strong>No Hotels Found</strong>
+        </p>
+      )}
     </div>
   );
 };

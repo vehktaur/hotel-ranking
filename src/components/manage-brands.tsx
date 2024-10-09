@@ -17,7 +17,7 @@ const ManageBrands = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto ~mt-8/16 mb-8">
+    <section className="max-w-md mx-auto ~mt-8/16 mb-8">
       <div>
         <h2 className="font-semibold ~text-2xl/4xl mb-6">All Brands</h2>
 
@@ -36,7 +36,7 @@ const ManageBrands = () => {
           ))}
         </ol>
       </div>
-    </div>
+    </section>
   );
 };
 export default ManageBrands;

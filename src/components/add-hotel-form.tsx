@@ -33,7 +33,7 @@ const AddHotelForm = () => {
         Add A New Favourite Hotel
       </h2>
       <form className="~text-sm/base" onSubmit={handleSubmit(onSubmit)}>
-        <div className="~space-y-2/4">
+        <div className="~space-y-4/6">
           <div className="grid gap-2">
             <label htmlFor="name">
               Name <span className="text-red-500">*</span>
@@ -127,7 +127,7 @@ const AddHotelForm = () => {
           </div>
         </div>
 
-        <div className="mt-6">
+        <div className="~mt-6/8">
           <button className="border border-[#333] hover:text-white hover:bg-[#333] transition-colors duration-300 px-6 py-2">
             Add
           </button>
