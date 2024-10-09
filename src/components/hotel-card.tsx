@@ -3,8 +3,10 @@ import { Hotel } from '../lib/definitions';
 import { Link } from 'react-router-dom';
 import { MapPinIcon } from '@heroicons/react/16/solid';
 
+// Component for displaying hotel details in a card format
 const HotelCard = ({ hotel }: { hotel: Hotel }) => {
   return (
+    // Link to the hotel details page
     <Link className="block" to={`/${hotel.name}__${hotel.id}`}>
       <div className="h-full border border-[#ccc] hover:shadow-md cursor-pointer transition-all duration-500 rounded-xl px-5 py-6 ~text-sm/base">
         <div className="flex flex-col h-full justify-between gap-3">
@@ -27,6 +29,7 @@ const HotelCard = ({ hotel }: { hotel: Hotel }) => {
             </p>
           )}
 
+          {/* Hotel rating display */}
           <p
             className="flex items-center justify-end gap-1"
             title={`${hotel.rating}/5`}

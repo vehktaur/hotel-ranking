@@ -1,15 +1,18 @@
 import { useSearchParams } from 'react-router-dom';
 import { useBrands } from '../hooks/hooks';
 
+// Component for filtering hotels by brand
 const BrandFilter = () => {
-  const [_, setSearchParams] = useSearchParams();
+  const [_, setSearchParams] = useSearchParams(); // Use search params from the URL
 
+  // Handles the change event for the brand selection
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const { value } = event.target;
+    // Update search params based on selected brand
     value ? setSearchParams({ brand: value }) : setSearchParams('');
   };
 
-  const { brands } = useBrands();
+  const { brands } = useBrands(); // Hook to get the available brands
   return (
     <form className="flex gap-3 items-center">
       <label htmlFor="brandFilter">Brand:</label>
