@@ -20,9 +20,7 @@ const ManageBrands = () => {
     <div className="max-w-md mx-auto ~mt-8/16 mb-8">
       <div>
         <h2 className="font-semibold ~text-2xl/4xl mb-6">All Brands</h2>
-        <div className="grid grid-cols-2">
-          <h3 className="font-medium ~text-lg/xl mb-2">Name</h3>
-        </div>
+
         <ol className="list-decimal ps-4 ~text-sm/base">
           {reduce(brands).map((brand: string) => (
             <li key={brand} className=" py-2 ps-2 border-b">
