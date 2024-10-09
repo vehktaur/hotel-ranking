@@ -15,7 +15,7 @@ const EditHotel = () => {
   const { hotels, dispatch } = context;
 
   const hotel = hotels.find((hotel) => hotel.id === id);
-  const { register, handleSubmit, reset } = useForm<Hotel>({
+  const { register, handleSubmit } = useForm<Hotel>({
     defaultValues: {
       id: hotel?.id,
       name: hotel?.name,

@@ -9,7 +9,7 @@ const Map = ({ address, name }: { address: string; name: string }) => {
     undefined
   );
 
-  const apiKey = 'AIzaSyBCuhmrV8Nm2CRX-3sx9KPkgumGqWmNyvI';
+  const apiKey = import.meta.env.VITE_MAP_API_KEY;
 
   setKey(apiKey || '');
 
