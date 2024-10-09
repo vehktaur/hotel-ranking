@@ -1,12 +1,30 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Hotel } from '../lib/definitions';
+import { HotelsContext } from '../context/hotel-provider';
+import { useContext } from 'react';
+import { nanoid } from 'nanoid';
+import { useNavigate } from 'react-router-dom';
 
 const AddHotel = () => {
-  const { register, handleSubmit, reset } = useForm<Hotel>();
+  const { register, handleSubmit, reset } = useForm<Hotel>({
+    defaultValues: {
+      id: nanoid()
+    }
+  });
+
+  const context = useContext(HotelsContext);
+  if (!context) {
+    throw new Error('NestedComponent must be used within a HotelProvider');
+  }
+  const { dispatch } = context;
+
+  const navigate = useNavigate();
 
   const onSubmit: SubmitHandler<Hotel> = (data) => {
     console.log(data);
+    dispatch({ type: 'add', newHotel: data });
     reset();
+    navigate('/');
   };
   return (
     <div className="p-5">
@@ -59,9 +77,9 @@ const AddHotel = () => {
             <div className="grid gap-2">
               <label htmlFor="address">Brand</label>
               <select id="address" {...register('brand', { required: true })}>
-                <option value="">Brand 1</option>
-                <option value="">Brand 2</option>
-                <option value="">Brand 3</option>
+                <option value="Brand ">Brand 1</option>
+                <option value="Brand ">Brand 2</option>
+                <option value="Brand ">Brand 3</option>
               </select>
             </div>
             <div className="grid gap-2">

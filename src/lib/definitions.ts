@@ -1,3 +1,5 @@
+import { Dispatch } from 'react';
+
 export interface Hotel {
   id: string;
   name: string;
@@ -8,3 +10,13 @@ export interface Hotel {
   rating: number;
   review?: string;
 }
+
+export interface HotelsContextType {
+  hotels: Hotel[];
+  dispatch: Dispatch<HotelAction>;
+}
+
+export type HotelAction =
+  | { type: 'add'; newHotel: Hotel }
+  | { type: 'edit'; newHotel: Hotel }
+  | { type: 'delete'; id: string };

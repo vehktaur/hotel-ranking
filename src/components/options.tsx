@@ -4,8 +4,9 @@ import {
   TrashIcon
 } from '@heroicons/react/24/outline';
 
-import { RefObject, useEffect, useRef, useState } from 'react';
+import { RefObject, useContext, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { HotelsContext } from '../context/hotel-provider';
 
 const Options = ({ id }: { id: string }) => {
   //Define state variables
@@ -13,13 +14,23 @@ const Options = ({ id }: { id: string }) => {
   const [showConfirmation, setShowConfirmation] = useState(false);
   const dropdownRef: RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
 
+  const context = useContext(HotelsContext);
+
+  if (!context) {
+    throw new Error('NestedComponent must be used within a HotelProvider');
+  }
+
+  const { dispatch } = context;
+
   //Handle Toggle Effects
   const handleClick = (): void => {
     setIsOpen((prev) => !prev);
   };
 
-  const deleteBlog = () => {
+  const deleteHotel = () => {
+    dispatch({ type: 'delete', id });
     console.log('deleted');
+    setShowConfirmation(false);
   };
 
   // Close dropdown if clicked outside
@@ -66,7 +77,7 @@ const Options = ({ id }: { id: string }) => {
 
             <div className="mt-4 flex items-center justify-center gap-4">
               <button
-                onClick={() => deleteBlog()}
+                onClick={() => deleteHotel()}
                 className="hover:bg-red-500 transition-colors duration-300 rounded-3xl border border-red-300 px-4 py-2 font-medium hover:text-white"
               >
                 Yes
@@ -87,7 +98,7 @@ const Options = ({ id }: { id: string }) => {
         onClick={handleClick}
         className="grid place-items-center"
       >
-        <div className='hidden sm:flex ~gap-4/8 items-center'>
+        <div className="hidden sm:flex ~gap-4/8 items-center">
           <Link
             to={`/edit-hotel/${id}`}
             className="flex w-full items-center gap-1.5 py-2 text-left ~text-sm/base transition-transform duration-500 will-change-transform hover:scale-[103%] hover:font-medium"

@@ -10,6 +10,7 @@ import AddHotel from './pages/add-hotel.tsx';
 import ErrorPage from './pages/error-page.tsx';
 import HotelDetails from './pages/hotel-details.tsx';
 import EditHotel from './pages/edit-hotel.tsx';
+import HotelProvider from './context/hotel-provider.tsx';
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <HotelProvider>
+      <RouterProvider router={router} />
+    </HotelProvider>
   </StrictMode>
 );

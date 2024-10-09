@@ -1,16 +1,28 @@
 import { useParams } from 'react-router-dom';
-import { hotels } from '../lib/placeholder-data';
 import { StarIcon } from '@heroicons/react/20/solid';
 import Map from '../components/map';
 import Options from '../components/options';
+import { useContext } from 'react';
+import { HotelsContext } from '../context/hotel-provider';
 
 const HotelDetails = () => {
   const { name } = useParams();
+  const context = useContext(HotelsContext);
+
+  if (!context) {
+    throw new Error('NestedComponent must be used within a HotelProvider');
+  }
+
+  const { hotels } = context;
 
   const hotel = hotels.find((hotel) => hotel.name === name);
 
   if (!hotel) {
-    return <div>Hotel not found</div>;
+    return (
+      <div className="py-12 text-center">
+        <strong>Hotel not found</strong>
+      </div>
+    );
   }
   return (
     <div className="p-5">

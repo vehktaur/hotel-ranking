@@ -1,13 +1,23 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Hotel } from '../lib/definitions';
-import { hotels } from '../lib/placeholder-data';
-import { useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import { HotelsContext } from '../context/hotel-provider';
+import { useContext } from 'react';
+import { ChevronLeftIcon } from '@heroicons/react/24/outline';
 
 const EditHotel = () => {
   const { id } = useParams();
+
+  const context = useContext(HotelsContext);
+  if (!context) {
+    throw new Error('NestedComponent must be used within a HotelProvider');
+  }
+  const { hotels, dispatch } = context;
+
   const hotel = hotels.find((hotel) => hotel.id === id);
   const { register, handleSubmit, reset } = useForm<Hotel>({
     defaultValues: {
+      id: hotel?.id,
       name: hotel?.name,
       city: hotel?.city,
       country: hotel?.country,
@@ -17,22 +27,31 @@ const EditHotel = () => {
     }
   });
 
+  const navigate = useNavigate();
   const onSubmit: SubmitHandler<Hotel> = (data) => {
     console.log(data);
-    reset();
+    dispatch({ type: 'edit', newHotel: data });
+    navigate(`/${hotel?.name}`);
   };
 
-  console.log(hotel)
+  console.log(hotel);
   return (
     <div className="p-5">
       <div className="max-w-md mx-auto">
-        <h2 className="~text-xl/3xl font-bold ~mb-5/8 text-center">
+        <Link
+          className="flex items-center gap-2 font-medium ~text-base/lg"
+          to={`/${hotel?.name}`}
+        >
+          <ChevronLeftIcon className="w-4" /> Back
+        </Link>
+        <h2 className="~text-xl/3xl font-bold text-center mx-auto ~mb-5/8">
           Edit Hotel
         </h2>
+
         <form className="~text-sm/base" onSubmit={handleSubmit(onSubmit)}>
           <div className="~space-y-2/4">
             <div className="grid gap-2">
-              <label htmlFor="name">
+              <label className="font-medium" htmlFor="name">
                 Name <span className="text-red-500">*</span>
               </label>
               <input
@@ -42,7 +61,7 @@ const EditHotel = () => {
               />
             </div>
             <div className="grid gap-2">
-              <label htmlFor="city">
+              <label className="font-medium" htmlFor="city">
                 City <span className="text-red-500">*</span>
               </label>
               <input
@@ -52,7 +71,7 @@ const EditHotel = () => {
               />
             </div>
             <div className="grid gap-2">
-              <label htmlFor="country">
+              <label className="font-medium" htmlFor="country">
                 Country <span className="text-red-500">*</span>
               </label>
               <input
@@ -62,7 +81,7 @@ const EditHotel = () => {
               />
             </div>
             <div className="grid gap-2">
-              <label htmlFor="address">
+              <label className="font-medium" htmlFor="address">
                 Address <span className="text-red-500">*</span>
               </label>
               <input
@@ -72,15 +91,17 @@ const EditHotel = () => {
               />
             </div>
             <div className="grid gap-2">
-              <label htmlFor="address">Brand</label>
+              <label className="font-medium" htmlFor="address">
+                Brand
+              </label>
               <select id="address" {...register('brand', { required: true })}>
-                <option value="">Brand 1</option>
-                <option value="">Brand 2</option>
-                <option value="">Brand 3</option>
+                <option value="Brand 1">Brand 1</option>
+                <option value="Brand 2">Brand 2</option>
+                <option value="Brand 3">Brand 3</option>
               </select>
             </div>
             <div className="grid gap-2">
-              <label htmlFor="rating">
+              <label className="font-medium" htmlFor="rating">
                 Rating <span className="text-red-500">*</span>
               </label>
               <input
@@ -98,7 +119,7 @@ const EditHotel = () => {
               />
             </div>
             <div className="grid gap-2">
-              <label htmlFor="review">
+              <label className="font-medium" htmlFor="review">
                 Review <span className="text-gray-500 text-xs">(optional)</span>
               </label>
               <textarea id="review" rows={3} {...register('review')} />
@@ -107,7 +128,7 @@ const EditHotel = () => {
 
           <div className="mt-6">
             <button className="border border-[#333] hover:text-white hover:bg-[#333] transition-colors duration-300 px-6 py-2">
-              Add
+              Edit
             </button>
           </div>
         </form>

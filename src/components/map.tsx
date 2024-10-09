@@ -29,8 +29,6 @@ const Map = ({ address, name }: { address: string; name: string }) => {
     getPosition();
   }, [position]);
 
-  console.log(position);
-
   if (!position) {
     return <div className="h-[30rem] grid place-items-center">Loading...</div>;
   }
