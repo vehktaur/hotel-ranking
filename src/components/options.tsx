@@ -5,7 +5,7 @@ import {
 } from '@heroicons/react/24/outline';
 
 import { RefObject, useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useHotels } from '../hooks/hooks';
 
 const Options = ({ id }: { id: string }) => {
@@ -13,7 +13,6 @@ const Options = ({ id }: { id: string }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [showConfirmation, setShowConfirmation] = useState(false);
   const dropdownRef: RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
-
   const { dispatchHotels } = useHotels();
 
   //Handle Toggle Effects
@@ -21,9 +20,12 @@ const Options = ({ id }: { id: string }) => {
     setIsOpen((prev) => !prev);
   };
 
+  const navigate = useNavigate();
+
   const deleteHotel = () => {
     dispatchHotels({ type: 'delete', id });
     console.log('deleted');
+    navigate('/');
     setShowConfirmation(false);
   };
 
