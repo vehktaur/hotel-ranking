@@ -1,16 +1,10 @@
 import { setKey, fromAddress } from 'react-geocode';
 import { useEffect, useState } from 'react';
-import {
-  AdvancedMarker,
-  APIProvider,
-  Map,
-  useApiIsLoaded
-} from '@vis.gl/react-google-maps';
+import { AdvancedMarker, APIProvider, Map } from '@vis.gl/react-google-maps';
 
 // Map component for rendering a map based on address
 const CustomMap = ({ address, name }: { address: string; name: string }) => {
   const [center, setCenter] = useState<google.maps.LatLngLiteral | undefined>();
-  const apiIsLoaded = useApiIsLoaded();
 
   // Set API key for geocoding service
   const apiKey = import.meta.env.VITE_MAP_API_KEY;
@@ -32,7 +26,7 @@ const CustomMap = ({ address, name }: { address: string; name: string }) => {
     };
 
     getPosition();
-  }, [address, apiIsLoaded]);
+  }, [address]);
 
   // Show a loading message until position is determined
   if (!center) {
@@ -43,11 +37,9 @@ const CustomMap = ({ address, name }: { address: string; name: string }) => {
     <div className="h-[30rem] max-w-3xl mx-auto rounded-xl overflow-hidden">
       <APIProvider apiKey={apiKey} language="en">
         <Map
-          style={{ width: '100%', height: '100%' }}
+          className="size-full"
           defaultCenter={center}
           defaultZoom={18}
-          gestureHandling={'greedy'}
-          disableDefaultUI={true}
           mapId={mapId}
         >
           <AdvancedMarker position={center} title={name} />
