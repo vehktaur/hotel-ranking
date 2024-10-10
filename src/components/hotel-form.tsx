@@ -15,7 +15,7 @@ const HotelForm = ({
   const { register, resetField } = useFormContext(); // Access form methods from context
 
   const { brands } = useBrands(); // Get brands from the custom hook
-  const navigate = useNavigate(); //enable backwards navigation
+  const navigate = useNavigate(); //enable backwards navigation to details page
 
   return (
     <div className="max-w-md mx-auto">
