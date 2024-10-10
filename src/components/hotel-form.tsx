@@ -23,7 +23,7 @@ const HotelForm = ({
       {/* Link to navigate back to the hotel details */}
       {edit && (
         <Link
-          className="flex items-center gap-2 font-medium ~text-base/lg"
+          className="flex items-center gap-2 font-medium ~text-base/lg mb-3"
           to={`/${hotel?.name}__${hotel?.id}`}
         >
           <ChevronLeftIcon className="w-4" /> Back

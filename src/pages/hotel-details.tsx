@@ -1,8 +1,9 @@
 import { useParams } from 'react-router-dom';
 import { StarIcon } from '@heroicons/react/20/solid';
-import Map from '../components/map';
+// import Map from '../components/map';
 import Options from '../components/options';
 import { useHotels } from '../hooks/hooks';
+import CustomMap from '../components/map';
 
 const HotelDetails = () => {
   const { name } = useParams();
@@ -68,7 +69,7 @@ const HotelDetails = () => {
         {/* Map Section */}
         <div className="border p-5 rounded-lg border-[#666] mt-8">
           <h2 className="~text-lg/2xl font-bold mb-4">Location Map</h2>
-          <Map address={hotel.address} name={hotel.name} />
+          <CustomMap address={hotel.address} name={hotel.name} />
         </div>
       </div>
     </div>
