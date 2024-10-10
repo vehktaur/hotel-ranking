@@ -3,6 +3,7 @@ import { Hotel } from '../lib/definitions';
 import { Link } from 'react-router-dom';
 import { ChevronLeftIcon, PlusIcon } from '@heroicons/react/24/outline';
 import { useBrands } from '../hooks/hooks';
+import AddressInput from './address-input';
 
 // Form component for adding or editing hotel details
 const HotelForm = ({
@@ -43,6 +44,7 @@ const HotelForm = ({
               id="name"
               type="text"
               {...register('name', { required: true })}
+              placeholder="e.g., Hotel Grand"
             />
           </div>
 
@@ -54,6 +56,7 @@ const HotelForm = ({
               id="city"
               type="text"
               {...register('city', { required: true })}
+              placeholder="e.g., London"
             />
           </div>
 
@@ -65,6 +68,7 @@ const HotelForm = ({
               id="country"
               type="text"
               {...register('country', { required: true })}
+              placeholder="e.g., United Kingdom"
             />
           </div>
 
@@ -72,11 +76,7 @@ const HotelForm = ({
             <label htmlFor="address">
               Address <span className="text-red-500">*</span>
             </label>
-            <input
-              id="address"
-              type="text"
-              {...register('address', { required: true })}
-            />
+            <AddressInput />
           </div>
 
           <div className="grid gap-2">
@@ -124,7 +124,7 @@ const HotelForm = ({
             <input
               id="rating"
               type="number"
-              placeholder="Rate out of 5"
+              placeholder="e.g., 4.5"
               max={5}
               step={0.1}
               min={0}
@@ -141,7 +141,12 @@ const HotelForm = ({
             <label htmlFor="review">
               Review <span className="text-gray-500 text-xs">(optional)</span>
             </label>
-            <textarea id="review" rows={3} {...register('review')} />
+            <textarea
+              id="review"
+              rows={3}
+              {...register('review')}
+              placeholder="Share your experience..."
+            />
           </div>
         </div>
 
