@@ -39,11 +39,7 @@ const EditHotel = () => {
     <div className="p-5">
       <FormProvider {...methods}>
         {/* Hotel form for editing details */}
-        <HotelForm
-          onSubmit={methods.handleSubmit(onSubmit)}
-          edit={true}
-          hotel={hotel}
-        />
+        <HotelForm onSubmit={methods.handleSubmit(onSubmit)} edit={true} />
       </FormProvider>
 
       {/* Component to manage associated brands */}

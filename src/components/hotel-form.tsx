@@ -1,34 +1,32 @@
 import { useFormContext } from 'react-hook-form';
-import { Hotel } from '../lib/definitions';
-import { Link } from 'react-router-dom';
 import { ChevronLeftIcon, PlusIcon } from '@heroicons/react/24/outline';
 import { useBrands } from '../hooks/hooks';
 import AddressInput from './address-input';
+import { useNavigate } from 'react-router-dom';
 
 // Form component for adding or editing hotel details
 const HotelForm = ({
   onSubmit,
-  edit,
-  hotel
+  edit
 }: {
   onSubmit: React.FormEventHandler<HTMLFormElement> | undefined;
   edit?: boolean; // Flag to determine if this is an edit form
-  hotel?: Hotel; // Optional hotel object for editing
 }) => {
   const { register, resetField } = useFormContext(); // Access form methods from context
 
   const { brands } = useBrands(); // Get brands from the custom hook
+  const navigate = useNavigate(); //enable backwards navigation
 
   return (
     <div className="max-w-md mx-auto">
       {/* Link to navigate back to the hotel details */}
       {edit && (
-        <Link
+        <button
+          onClick={() => navigate(-1)}
           className="flex items-center gap-2 font-medium ~text-base/lg mb-3"
-          to={`/${hotel?.name}__${hotel?.id}`}
         >
           <ChevronLeftIcon className="w-4" /> Back
-        </Link>
+        </button>
       )}
 
       <h2 className="~text-xl/3xl font-bold ~mb-5/8 text-center">
