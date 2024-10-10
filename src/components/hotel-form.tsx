@@ -3,6 +3,7 @@ import { ChevronLeftIcon, PlusIcon } from '@heroicons/react/24/outline';
 import { useBrands } from '../hooks/hooks';
 import AddressInput from './address-input';
 import { useNavigate } from 'react-router-dom';
+import { Hotel } from '../lib/definitions';
 
 // Form component for adding or editing hotel details
 const HotelForm = ({
@@ -12,7 +13,7 @@ const HotelForm = ({
   onSubmit: React.FormEventHandler<HTMLFormElement> | undefined;
   edit?: boolean; // Flag to determine if this is an edit form
 }) => {
-  const { register, resetField } = useFormContext(); // Access form methods from context
+  const { register, resetField } = useFormContext<Hotel>(); // Access form methods from context
 
   const { brands } = useBrands(); // Get brands from the custom hook
   const navigate = useNavigate(); //enable backwards navigation to details page
