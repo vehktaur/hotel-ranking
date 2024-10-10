@@ -45,7 +45,7 @@ const CustomMap = ({ address, name }: { address: string; name: string }) => {
   }, [address, apiIsLoaded]);
 
   // Show a loading message until position is determined
-  if (!center || !apiIsLoaded) {
+  if (!center) {
     return <div className="h-[30rem] grid place-items-center">Loading...</div>;
   }
 
