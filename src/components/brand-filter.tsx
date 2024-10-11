@@ -1,5 +1,5 @@
 import { useSearchParams } from 'react-router-dom';
-import { useBrands } from '../hooks/hooks';
+import { useGlobalState } from '../hooks/hooks';
 
 // Component for filtering hotels by brand
 const BrandFilter = () => {
@@ -12,7 +12,9 @@ const BrandFilter = () => {
     value ? setSearchParams({ brand: value }) : setSearchParams('');
   };
 
-  const { brands } = useBrands(); // Hook to get the available brands
+  const {
+    state: { brands },
+  } = useGlobalState(); // Hook to get the available brands
   return (
     <form className="flex items-center gap-3">
       <label htmlFor="brandFilter">Brand:</label>

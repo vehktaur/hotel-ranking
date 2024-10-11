@@ -1,6 +1,6 @@
 import { useFormContext } from 'react-hook-form';
 import { ChevronLeftIcon, PlusIcon } from '@heroicons/react/24/outline';
-import { useBrands } from '../hooks/hooks';
+import { useGlobalState } from '../hooks/hooks';
 import AddressInput from './address-input';
 import { useNavigate } from 'react-router-dom';
 import { Hotel } from '../lib/definitions';
@@ -15,11 +15,13 @@ const HotelForm = ({
 }) => {
   const {
     register,
-    resetField,
+    setValue,
     formState: { errors },
   } = useFormContext<Hotel>(); // Access form methods from context
 
-  const { brands } = useBrands(); // Get brands from the custom hook
+  const {
+    state: { brands },
+  } = useGlobalState(); // Get brands from the custom hook
   const navigate = useNavigate(); //enable backwards navigation to details page
 
   return (
@@ -129,7 +131,7 @@ const HotelForm = ({
               <button
                 className="ms-3 rounded-full border px-3 py-0.5 text-red-700"
                 type="button"
-                onClick={() => resetField('brand')}
+                onClick={() => setValue('brand', '')}
               >
                 Clear
               </button>

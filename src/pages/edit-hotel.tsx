@@ -3,14 +3,17 @@ import ManageBrands from '../components/manage-brands';
 import { useForm, FormProvider, SubmitHandler } from 'react-hook-form';
 import { Hotel } from '../lib/definitions';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useHotels } from '../hooks/hooks';
+import { useGlobalState } from '../hooks/hooks';
 
 // Component for editing an existing hotel's details
 const EditHotel = () => {
   const { id } = useParams();
 
   // Access hotels state for managing hotel data
-  const { hotels, dispatchHotels } = useHotels();
+  const {
+    state: { hotels },
+    dispatch,
+  } = useGlobalState();
   const navigate = useNavigate();
 
   // Find the hotel by ID from context
@@ -23,6 +26,7 @@ const EditHotel = () => {
       name: hotel?.name,
       city: hotel?.city,
       country: hotel?.country,
+      brand: hotel?.brand,
       address: hotel?.address,
       rating: hotel?.rating,
       review: hotel?.review,
@@ -31,7 +35,7 @@ const EditHotel = () => {
 
   // Handle form submission
   const onSubmit: SubmitHandler<Hotel> = (data) => {
-    dispatchHotels({ type: 'edit', newHotel: data });
+    dispatch({ type: 'editHotel', newHotel: data });
     navigate(-1);
   };
 

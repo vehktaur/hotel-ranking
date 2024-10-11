@@ -4,7 +4,7 @@ import ManageBrands from '../components/manage-brands';
 import { useForm, FormProvider, SubmitHandler } from 'react-hook-form';
 import { Hotel } from '../lib/definitions';
 import { useNavigate } from 'react-router-dom';
-import { useHotels } from '../hooks/hooks';
+import { useGlobalState } from '../hooks/hooks';
 
 // Component to add a new hotel
 const AddHotel = () => {
@@ -16,12 +16,12 @@ const AddHotel = () => {
   });
 
   // Get state for managing hotels
-  const { dispatchHotels } = useHotels();
+  const { dispatch } = useGlobalState();
   const navigate = useNavigate();
 
   // Handler for form submission
   const onSubmit: SubmitHandler<Hotel> = (data) => {
-    dispatchHotels({ type: 'add', newHotel: data }); // Dispatch action to add hotel
+    dispatch({ type: 'addHotel', newHotel: data }); // Dispatch action to add hotel
     methods.reset(); // Reset the form after submission
     navigate('/'); // Navigate back to the home page
   };

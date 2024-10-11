@@ -2,14 +2,16 @@ import { useParams } from 'react-router-dom';
 import { StarIcon } from '@heroicons/react/20/solid';
 // import Map from '../components/map';
 import Options from '../components/options';
-import { useHotels } from '../hooks/hooks';
+import { useGlobalState } from '../hooks/hooks';
 import CustomMap from '../components/map';
 
 const HotelDetails = () => {
   const { name } = useParams();
   const id = name?.split('__').pop();
 
-  const { hotels } = useHotels();
+  const {
+    state: { hotels },
+  } = useGlobalState();
 
   const hotel = hotels.find((hotel) => hotel.id === id);
 

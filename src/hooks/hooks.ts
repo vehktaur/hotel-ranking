@@ -1,26 +1,14 @@
 import { useContext } from 'react';
 import { HotelsContext } from '../context/hotel-provider';
 
-// Hook to access hotels-related state and actions
-export const useHotels = () => {
+// Hook to access global state and actions
+export const useGlobalState = () => {
   const context = useContext(HotelsContext);
 
   if (!context) {
-    throw new Error('useHotels must be used within a HotelProvider');
+    throw new Error('useGlobalState must be used within a HotelProvider');
   }
 
-  const { hotels, dispatchHotels } = context;
-  return { hotels, dispatchHotels };
-};
-
-// Hook to access brands-related state and actions
-export const useBrands = () => {
-  const context = useContext(HotelsContext);
-
-  if (!context) {
-    throw new Error('useBrands must be used within a HotelProvider');
-  }
-
-  const { brands, dispatchBrands } = context;
-  return { brands, dispatchBrands };
+  const { state, dispatch } = context;
+  return { state, dispatch };
 };

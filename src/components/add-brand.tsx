@@ -1,18 +1,18 @@
 import { useState } from 'react';
-import { useBrands } from '../hooks/hooks';
+import { useGlobalState } from '../hooks/hooks';
 
 const AddBrand = () => {
   // State to store the new brand
   const [newBrand, setNewBrand] = useState<string>('');
 
   // Hook to manage brand state
-  const { dispatchBrands } = useBrands();
+  const { dispatch } = useGlobalState();
 
   // Handles form submission to add a new brand
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (newBrand && newBrand !== '') {
-      dispatchBrands({ type: 'add', newBrand }); // Dispatch action to add the brand
+      dispatch({ type: 'addBrand', newBrand }); // Dispatch action to add the brand
     }
     setNewBrand(''); // Reset the input field
   };

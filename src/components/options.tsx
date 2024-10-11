@@ -6,7 +6,7 @@ import {
 
 import { RefObject, useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useHotels } from '../hooks/hooks';
+import { useGlobalState } from '../hooks/hooks';
 
 // Component for hotel management options (edit/delete)
 const Options = ({ id }: { id: string }) => {
@@ -16,7 +16,7 @@ const Options = ({ id }: { id: string }) => {
   const dropdownRef: RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null); // References for detecting clicks outside the dropdown
 
   //Hook to Manipulate Hotels Data
-  const { dispatchHotels } = useHotels();
+  const { dispatch } = useGlobalState();
   const navigate = useNavigate();
 
   // Toggle dropdown visibility
@@ -26,7 +26,7 @@ const Options = ({ id }: { id: string }) => {
 
   // Delete hotel action
   const deleteHotel = () => {
-    dispatchHotels({ type: 'delete', id });
+    dispatch({ type: 'deleteHotel', id });
     navigate('/');
     setShowConfirmation(false);
   };

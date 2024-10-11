@@ -11,19 +11,19 @@ export interface Hotel {
   review?: string;
 }
 
-export interface HotelsContextType {
+export interface GlobalState {
   hotels: Hotel[];
-  dispatchHotels: Dispatch<HotelAction>;
   brands: string[];
-  dispatchBrands: Dispatch<BrandAction>;
 }
 
-export type HotelAction =
-  | { type: 'add'; newHotel: Hotel }
-  | { type: 'edit'; newHotel: Hotel }
-  | { type: 'delete'; id: string }
-  | { type: 'removeBrandFromHotels'; brand: string };
+export interface HotelsContextType {
+  state: GlobalState;
+  dispatch: Dispatch<StateAction>;
+}
 
-export type BrandAction =
-  | { type: 'add'; newBrand: string }
-  | { type: 'delete'; brand: string };
+export type StateAction =
+  | { type: 'addHotel'; newHotel: Hotel }
+  | { type: 'editHotel'; newHotel: Hotel }
+  | { type: 'deleteHotel'; id: string }
+  | { type: 'addBrand'; newBrand: string }
+  | { type: 'deleteBrand'; brand: string };

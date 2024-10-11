@@ -1,11 +1,13 @@
 import HotelCard from './hotel-card';
 import { useSearchParams } from 'react-router-dom';
-import { useHotels } from '../hooks/hooks';
+import { useGlobalState } from '../hooks/hooks';
 
 // Component for displaying a list of hotels
 const HotelList = () => {
   // Fetch hotels and search parameters
-  const { hotels } = useHotels();
+  const {
+    state: { hotels },
+  } = useGlobalState();
   const [searchParams] = useSearchParams();
 
   // Get the selected brand from the search parameters
