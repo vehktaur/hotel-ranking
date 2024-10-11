@@ -3,8 +3,9 @@ import { createRoot } from 'react-dom/client';
 import './index.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
+import RootLayout from './layouts/layout.tsx';
+
 //Pages import
-import RootLayout from './layout.tsx';
 import Home from './pages/home.tsx';
 import AddHotel from './pages/add-hotel.tsx';
 import ErrorPage from './pages/error-page.tsx';

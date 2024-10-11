@@ -42,7 +42,7 @@ const Input = () => {
     <Controller
       name="address"
       control={control}
-      rules={{ required: true }}
+      rules={{ required: 'Please enter a valid address' }}
       render={({ field }) => (
         <input
           id="address"

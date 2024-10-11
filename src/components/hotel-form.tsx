@@ -13,7 +13,11 @@ const HotelForm = ({
   onSubmit: React.FormEventHandler<HTMLFormElement> | undefined;
   edit?: boolean; // Flag to determine if this is an edit form
 }) => {
-  const { register, resetField } = useFormContext<Hotel>(); // Access form methods from context
+  const {
+    register,
+    resetField,
+    formState: { errors }
+  } = useFormContext<Hotel>(); // Access form methods from context
 
   const { brands } = useBrands(); // Get brands from the custom hook
   const navigate = useNavigate(); //enable backwards navigation to details page
@@ -42,9 +46,12 @@ const HotelForm = ({
             <input
               id="name"
               type="text"
-              {...register('name', { required: true })}
+              {...register('name', { required: 'Hotel name is required' })}
               placeholder="e.g., Hotel Grand"
             />
+            {errors.name?.message && (
+              <p className="text-red-600 ~text-xs/sm">{errors.name.message}</p>
+            )}
           </div>
 
           <div className="grid gap-2">
@@ -54,9 +61,12 @@ const HotelForm = ({
             <input
               id="city"
               type="text"
-              {...register('city', { required: true })}
+              {...register('city', { required: 'City is required' })}
               placeholder="e.g., London"
             />
+            {errors.city?.message && (
+              <p className="text-red-600 ~text-xs/sm">{errors.city.message}</p>
+            )}
           </div>
 
           <div className="grid gap-2">
@@ -66,9 +76,14 @@ const HotelForm = ({
             <input
               id="country"
               type="text"
-              {...register('country', { required: true })}
+              {...register('country', { required: 'Country is required' })}
               placeholder="e.g., United Kingdom"
             />
+            {errors.country?.message && (
+              <p className="text-red-600 ~text-xs/sm">
+                {errors.country.message}
+              </p>
+            )}
           </div>
 
           <div className="grid gap-2">
@@ -76,6 +91,11 @@ const HotelForm = ({
               Address <span className="text-red-500">*</span>
             </label>
             <AddressInput />
+            {errors.address?.message && (
+              <p className="text-red-600 ~text-xs/sm">
+                {errors.address.message}
+              </p>
+            )}
           </div>
 
           <div className="grid gap-2">
@@ -128,12 +148,17 @@ const HotelForm = ({
               step={0.1}
               min={0}
               {...register('rating', {
-                required: true,
+                required: 'Please provide a rating out of 5',
                 valueAsNumber: true,
                 max: 5,
                 min: 0
               })}
             />
+            {errors.rating?.message && (
+              <p className="text-red-600 ~text-xs/sm">
+                {errors.rating.message}
+              </p>
+            )}
           </div>
 
           <div className="grid gap-2">

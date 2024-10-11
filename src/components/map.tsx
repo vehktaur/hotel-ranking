@@ -34,7 +34,7 @@ const CustomMap = ({ address, name }: { address: string; name: string }) => {
   }
 
   return (
-    <div className="h-[30rem] max-w-3xl mx-auto rounded-xl overflow-hidden">
+    <div className="h-[30rem] max-w-3xl mx-auto rounded-xl border overflow-hidden">
       <APIProvider apiKey={apiKey} language="en">
         <Map
           className="size-full"
