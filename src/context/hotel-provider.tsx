@@ -5,7 +5,7 @@ import { brandsReducer, hotelsReducer } from '../lib/reducer';
 
 // Create a context to manage hotels and brands state
 export const HotelsContext = createContext<HotelsContextType | undefined>(
-  undefined
+  undefined,
 );
 
 // Initialize hotels state from localStorage or fallback to default data
@@ -26,12 +26,12 @@ const HotelProvider = ({ children }: { children: React.ReactNode }) => {
   const [hotelsState, dispatchHotels] = useReducer(
     hotelsReducer,
     [],
-    hotelsInitializer
+    hotelsInitializer,
   );
   const [brandsState, dispatchBrands] = useReducer(
     brandsReducer,
     [],
-    brandsInitializer
+    brandsInitializer,
   );
 
   // Persist the hotels state in localStorage whenever it changes
@@ -50,7 +50,7 @@ const HotelProvider = ({ children }: { children: React.ReactNode }) => {
         hotels: hotelsState,
         dispatchHotels,
         brands: brandsState,
-        dispatchBrands
+        dispatchBrands,
       }}
     >
       {children}

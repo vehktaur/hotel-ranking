@@ -30,11 +30,11 @@ const CustomMap = ({ address, name }: { address: string; name: string }) => {
 
   // Show a loading message until position is determined
   if (!center) {
-    return <div className="h-[30rem] grid place-items-center">Loading...</div>;
+    return <div className="grid h-[30rem] place-items-center">Loading...</div>;
   }
 
   return (
-    <div className="h-[30rem] max-w-3xl mx-auto rounded-xl border overflow-hidden">
+    <div className="mx-auto h-[30rem] max-w-3xl overflow-hidden rounded-xl border">
       <APIProvider apiKey={apiKey} language="en">
         <Map
           className="size-full"

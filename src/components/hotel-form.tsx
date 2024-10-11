@@ -8,7 +8,7 @@ import { Hotel } from '../lib/definitions';
 // Form component for adding or editing hotel details
 const HotelForm = ({
   onSubmit,
-  edit
+  edit,
 }: {
   onSubmit: React.FormEventHandler<HTMLFormElement> | undefined;
   edit?: boolean; // Flag to determine if this is an edit form
@@ -16,25 +16,25 @@ const HotelForm = ({
   const {
     register,
     resetField,
-    formState: { errors }
+    formState: { errors },
   } = useFormContext<Hotel>(); // Access form methods from context
 
   const { brands } = useBrands(); // Get brands from the custom hook
   const navigate = useNavigate(); //enable backwards navigation to details page
 
   return (
-    <div className="max-w-md mx-auto">
+    <div className="mx-auto max-w-md">
       {/* Link to navigate back to the hotel details */}
       {edit && (
         <button
           onClick={() => navigate(-1)}
-          className="flex items-center gap-2 font-medium ~text-base/lg mb-3"
+          className="mb-3 flex items-center gap-2 font-medium ~text-base/lg"
         >
           <ChevronLeftIcon className="w-4" /> Back
         </button>
       )}
 
-      <h2 className="~text-xl/3xl font-bold ~mb-5/8 text-center">
+      <h2 className="text-center font-bold ~text-xl/3xl ~mb-5/8">
         Add A New Favourite Hotel
       </h2>
       <form className="~text-sm/base" onSubmit={onSubmit}>
@@ -100,7 +100,7 @@ const HotelForm = ({
 
           <div className="grid gap-2">
             <label htmlFor="address">Brand</label>
-            <div className="flex flex-wrap rounded border border-[#6b7280] ~px-2/4 py-3 ~gap-x-1/2 ~gap-y-2/4">
+            <div className="flex flex-wrap rounded border border-[#6b7280] py-3 ~gap-x-1/2 ~gap-y-2/4 ~px-2/4">
               {/* Link to add new brand */}
               <a
                 href="#add-brand"
@@ -127,7 +127,7 @@ const HotelForm = ({
                 </label>
               ))}
               <button
-                className="ms-3 px-3 py-0.5 rounded-full border text-red-700"
+                className="ms-3 rounded-full border px-3 py-0.5 text-red-700"
                 type="button"
                 onClick={() => resetField('brand')}
               >
@@ -151,7 +151,7 @@ const HotelForm = ({
                 required: 'Please provide a rating out of 5',
                 valueAsNumber: true,
                 max: 5,
-                min: 0
+                min: 0,
               })}
             />
             {errors.rating?.message && (
@@ -163,7 +163,7 @@ const HotelForm = ({
 
           <div className="grid gap-2">
             <label htmlFor="review">
-              Review <span className="text-gray-500 text-xs">(optional)</span>
+              Review <span className="text-xs text-gray-500">(optional)</span>
             </label>
             <textarea
               id="review"
@@ -176,7 +176,7 @@ const HotelForm = ({
 
         {/* Submit button for the form */}
         <div className="~mt-6/8">
-          <button className="border border-[#333] hover:text-white hover:bg-[#333] transition-colors duration-300 px-6 py-2">
+          <button className="border border-[#333] px-6 py-2 transition-colors duration-300 hover:bg-[#333] hover:text-white">
             {edit ? 'Edit' : 'Add'}
           </button>
         </div>

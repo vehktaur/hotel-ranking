@@ -22,22 +22,22 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home />
+        element: <Home />,
       },
       {
         path: '/add-hotel',
-        element: <AddHotel />
+        element: <AddHotel />,
       },
       {
         path: '/:name',
-        element: <HotelDetails />
+        element: <HotelDetails />,
       },
       {
         path: '/edit-hotel/:id',
-        element: <EditHotel />
-      }
-    ]
-  }
+        element: <EditHotel />,
+      },
+    ],
+  },
 ]);
 
 createRoot(document.getElementById('root')!).render(
@@ -45,5 +45,5 @@ createRoot(document.getElementById('root')!).render(
     <HotelProvider>
       <RouterProvider router={router} />
     </HotelProvider>
-  </StrictMode>
+  </StrictMode>,
 );

@@ -11,8 +11,8 @@ const AddHotel = () => {
   // Initialize form methods with default values
   const methods = useForm<Hotel>({
     defaultValues: {
-      id: nanoid() // Generate unique ID for the hotel
-    }
+      id: nanoid(), // Generate unique ID for the hotel
+    },
   });
 
   // Get state for managing hotels

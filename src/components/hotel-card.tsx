@@ -8,22 +8,22 @@ const HotelCard = ({ hotel }: { hotel: Hotel }) => {
   return (
     // Link to the hotel details page
     <Link className="block" to={`/${hotel.name}__${hotel.id}`}>
-      <div className="h-full border border-[#ccc] hover:shadow-md cursor-pointer transition-all duration-500 rounded-xl px-5 py-6 ~text-sm/base">
-        <div className="flex flex-col h-full justify-between gap-3">
-          <h3 className="~text-lg/xl font-medium">{hotel.name}</h3>
+      <div className="h-full cursor-pointer rounded-xl border border-[#ccc] px-5 py-6 transition-all duration-500 ~text-sm/base hover:shadow-md">
+        <div className="flex h-full flex-col justify-between gap-3">
+          <h3 className="font-medium ~text-lg/xl">{hotel.name}</h3>
 
-          <p className="flex justify-between items-center gap-4">
+          <p className="flex items-center justify-between gap-4">
             <span className="~text-xs/sm">{hotel.city}</span>{' '}
             <span className="~text-xs/sm">{hotel.country}</span>
           </p>
 
-          <address className="text-sm flex items-center gap-2">
+          <address className="flex items-center gap-2 text-sm">
             <MapPinIcon className="w-4" /> {hotel.address}
           </address>
 
           {hotel.brand && (
             <p className="flex justify-start">
-              <span className="border px-2 py-1 rounded-lg ~text-xs/sm text-white bg-slate-700">
+              <span className="rounded-lg border bg-slate-700 px-2 py-1 text-white ~text-xs/sm">
                 {hotel.brand}
               </span>
             </p>

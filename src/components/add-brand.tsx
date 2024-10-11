@@ -20,14 +20,14 @@ const AddBrand = () => {
     <div>
       <form className="flex gap-2" onSubmit={onSubmit}>
         <input
-          className="border-0 border-b-2 border-gray-200 px-0.5 focus:border-[#666] focus:ring-0 transition-colors duration-300"
+          className="border-0 border-b-2 border-gray-200 px-0.5 transition-colors duration-300 focus:border-[#666] focus:ring-0"
           type="text"
           onChange={(event) => setNewBrand(event.target.value)}
           value={newBrand}
           placeholder="Enter brand name"
         />
 
-        <button type="submit" className="border px-2 rounded">
+        <button type="submit" className="rounded border px-2">
           Add Brand
         </button>
       </form>

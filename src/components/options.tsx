@@ -1,7 +1,7 @@
 import {
   EllipsisHorizontalIcon,
   PencilSquareIcon,
-  TrashIcon
+  TrashIcon,
 } from '@heroicons/react/24/outline';
 
 import { RefObject, useEffect, useRef, useState } from 'react';
@@ -62,7 +62,7 @@ const Options = ({ id }: { id: string }) => {
           title=""
           className="bg fixed inset-0 z-50 grid place-items-center bg-[#00000046] px-5"
         >
-          <div className="max-w-[25rem] rounded-3xl bg-white px-6 py-8 text-center ~text-sm/base shadow-md ring-1 ring-stone-100">
+          <div className="max-w-[25rem] rounded-3xl bg-white px-6 py-8 text-center shadow-md ring-1 ring-stone-100 ~text-sm/base">
             <p>
               Are you sure you want to{' '}
               <span className="font-medium text-red-700">delete</span> this
@@ -77,13 +77,13 @@ const Options = ({ id }: { id: string }) => {
             <div className="mt-4 flex items-center justify-center gap-4">
               <button
                 onClick={() => deleteHotel()}
-                className="hover:bg-red-500 transition-colors duration-300 rounded-3xl border border-red-300 px-4 py-2 font-medium hover:text-white"
+                className="rounded-3xl border border-red-300 px-4 py-2 font-medium transition-colors duration-300 hover:bg-red-500 hover:text-white"
               >
                 Yes
               </button>
               <button
                 onClick={() => setShowConfirmation(false)}
-                className="hover:bg-green-500 transition-colors duration-300 rounded-3xl border border-green-300 px-4 py-2 font-medium hover:text-white"
+                className="rounded-3xl border border-green-300 px-4 py-2 font-medium transition-colors duration-300 hover:bg-green-500 hover:text-white"
               >
                 No
               </button>
@@ -93,11 +93,11 @@ const Options = ({ id }: { id: string }) => {
       )}
 
       {/* Desktop Options */}
-      <div className="hidden sm:flex ~gap-4/8 items-center">
+      <div className="hidden items-center ~gap-4/8 sm:flex">
         <Link
           title="Edit"
           to={`/edit-hotel/${id}`}
-          className="flex w-full items-center gap-1.5 py-2 text-left ~text-sm/base transition-transform duration-500 will-change-transform hover:scale-[103%] hover:font-medium"
+          className="flex w-full items-center gap-1.5 py-2 text-left transition-transform duration-500 will-change-transform ~text-sm/base hover:scale-[103%] hover:font-medium"
         >
           <PencilSquareIcon className="w-6" /> Edit
         </Link>
@@ -107,7 +107,7 @@ const Options = ({ id }: { id: string }) => {
             setShowConfirmation(true);
             setIsOpen(false);
           }}
-          className="flex w-full items-center gap-1.5 py-2 text-left ~text-sm/base text-red-600 transition-transform duration-500 will-change-transform hover:scale-[103%] hover:font-medium"
+          className="flex w-full items-center gap-1.5 py-2 text-left text-red-600 transition-transform duration-500 will-change-transform ~text-sm/base hover:scale-[103%] hover:font-medium"
         >
           <TrashIcon className="w-6" /> Delete
         </button>

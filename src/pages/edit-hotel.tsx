@@ -25,14 +25,14 @@ const EditHotel = () => {
       country: hotel?.country,
       address: hotel?.address,
       rating: hotel?.rating,
-      review: hotel?.review
-    }
+      review: hotel?.review,
+    },
   });
 
   // Handle form submission
   const onSubmit: SubmitHandler<Hotel> = (data) => {
     dispatchHotels({ type: 'edit', newHotel: data });
-    navigate(`/${hotel?.name}__${hotel?.id}`);
+    navigate(-1);
   };
 
   return (

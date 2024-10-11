@@ -25,7 +25,7 @@ const Input = () => {
 
     // Initialize the Autocomplete widget on the input field
     const autocompleteInstance = new google.maps.places.Autocomplete(
-      addressInputRef.current
+      addressInputRef.current,
     );
 
     // Listener for when a place is selected from the dropdown

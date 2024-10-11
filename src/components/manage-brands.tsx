@@ -13,25 +13,25 @@ const ManageBrands = () => {
   };
 
   return (
-    <section className="max-w-md mx-auto ~mt-8/16 mb-8">
+    <section className="mx-auto mb-8 max-w-md ~mt-8/16">
       <div>
-        <h2 className="font-semibold ~text-2xl/4xl mb-6">Manage Brands</h2>
+        <h2 className="mb-6 font-semibold ~text-2xl/4xl">Manage Brands</h2>
 
-        <div className="mt-2 mb-5" id="add-brand">
+        <div className="mb-5 mt-2" id="add-brand">
           {/* Component for adding a new brand */}
           <AddBrand />
         </div>
 
-        <h3 className="~text-xl/lg font-medium ~mb-2/3">All Brands</h3>
+        <h3 className="font-medium ~text-xl/lg ~mb-2/3">All Brands</h3>
         <ol className="list-decimal ps-4 ~text-sm/base">
           {/* List of all brands with remove buttons */}
           {brands.map((brand: string) => (
-            <li key={brand} className=" py-2 ps-2 border-b">
+            <li key={brand} className="border-b py-2 ps-2">
               {brand}
 
               <button
                 onClick={() => deleteBrand(brand)}
-                className=" ms-5 text-red-500 rounded-full px-1.5"
+                className="ms-5 rounded-full px-1.5 text-red-500"
               >
                 Remove
               </button>

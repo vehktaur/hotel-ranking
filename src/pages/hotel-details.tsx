@@ -23,11 +23,11 @@ const HotelDetails = () => {
   return (
     <div className="p-5">
       {/* Hotel Details Section */}
-      <div className="max-w-7xl mx-auto ~mt-6/12">
-        <div className="border p-5 rounded-lg border-[#666]">
+      <div className="mx-auto max-w-7xl ~mt-6/12">
+        <div className="rounded-lg border border-[#666] p-5">
           {/* Hotel Name and Options */}
-          <div className="flex justify-between items-center ~mb-7/12">
-            <h1 className="~text-2xl/4xl font-bold">{hotel.name}</h1>
+          <div className="flex items-center justify-between ~mb-7/12">
+            <h1 className="font-bold ~text-2xl/4xl">{hotel.name}</h1>
             <Options id={hotel.id} />
           </div>
 
@@ -45,7 +45,7 @@ const HotelDetails = () => {
           </div>
 
           {/* Hotel Rating */}
-          <div className="flex items-center gap-1 my-4">
+          <div className="my-4 flex items-center gap-1">
             <p className="~text-base/lg">Rating:</p>
             <span className="flex">
               {Array.from({ length: 5 }, (_, index) => (
@@ -55,7 +55,7 @@ const HotelDetails = () => {
                 />
               ))}
             </span>
-            <span className="text-sm ml-2 tracking-wider">
+            <span className="ml-2 text-sm tracking-wider">
               ({hotel.rating}/5)
             </span>
           </div>
@@ -67,8 +67,8 @@ const HotelDetails = () => {
         </div>
 
         {/* Map Section */}
-        <div className="border p-5 rounded-lg border-[#666] mt-8">
-          <h2 className="~text-lg/2xl font-bold mb-4">Location Map</h2>
+        <div className="mt-8 rounded-lg border border-[#666] p-5">
+          <h2 className="mb-4 font-bold ~text-lg/2xl">Location Map</h2>
           <CustomMap address={hotel.address} name={hotel.name} />
         </div>
       </div>

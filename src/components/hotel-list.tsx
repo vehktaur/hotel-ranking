@@ -22,7 +22,7 @@ const HotelList = () => {
     <div className="pt-4">
       {/* Render hotel cards if hotels are available */}
       {sortedHotels && sortedHotels.length > 0 ? (
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
           {sortedHotels &&
             sortedHotels.map((hotel) => (
               <HotelCard key={hotel.id} hotel={hotel} />

@@ -14,7 +14,7 @@ const BrandFilter = () => {
 
   const { brands } = useBrands(); // Hook to get the available brands
   return (
-    <form className="flex gap-3 items-center">
+    <form className="flex items-center gap-3">
       <label htmlFor="brandFilter">Brand:</label>
 
       <select

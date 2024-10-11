@@ -5,11 +5,11 @@ export default function ErrorPage() {
   console.error(error);
 
   return (
-    <div className="grid place-items-center px-5 min-h-screen">
-      <div className="~space-y-5/10 max-w-7xl mx-auto text-center">
+    <div className="grid min-h-screen place-items-center px-5">
+      <div className="mx-auto max-w-7xl text-center ~space-y-5/10">
         <h1 className="font-bold ~text-xl/4xl">Oops!</h1>
         <p>Sorry, an unexpected error has occurred.</p>
-        <p className="text-gray-500 italic">
+        <p className="italic text-gray-500">
           <i>{error.statusText || error.message}</i>
         </p>
       </div>
