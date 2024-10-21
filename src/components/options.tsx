@@ -46,6 +46,7 @@ const Options = ({ id }: { id: string }) => {
     if (isOpen) {
       window.addEventListener('click', handleOutsideClick);
     } else {
+      window.removeEventListener('click', handleOutsideClick);
     }
 
     // Clean up event listener when dropdown is closed

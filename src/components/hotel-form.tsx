@@ -179,7 +179,7 @@ const HotelForm = ({
         {/* Submit button for the form */}
         <div className="~mt-6/8">
           <button className="border border-[#333] px-6 py-2 transition-colors duration-300 hover:bg-[#333] hover:text-white">
-            {edit ? 'Edit' : 'Add'}
+            {edit ? 'Save' : 'Add'}
           </button>
         </div>
       </form>
