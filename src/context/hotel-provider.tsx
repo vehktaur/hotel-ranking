@@ -17,7 +17,7 @@ const stateInitializer = (): GlobalState => {
 // Global Context provider component for hotels and brands
 const HotelProvider = ({ children }: { children: React.ReactNode }) => {
   //Create state for hotels and Brands
-  const [state, dispatch] = useReducer(reducer, [], stateInitializer);
+  const [state, dispatch] = useReducer(reducer, {}, stateInitializer);
 
   // Persist the global state in localStorage whenever it changes
   useEffect(() => {
@@ -27,7 +27,7 @@ const HotelProvider = ({ children }: { children: React.ReactNode }) => {
   return (
     <HotelsContext.Provider
       value={{
-        state,
+        ...state,
         dispatch,
       }}
     >
