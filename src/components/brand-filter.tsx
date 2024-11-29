@@ -12,9 +12,7 @@ const BrandFilter = () => {
     value ? setSearchParams({ brand: value }) : setSearchParams('');
   };
 
-  const {
-    state: { brands },
-  } = useGlobalState(); // Hook to get the available brands
+  const { brands } = useGlobalState(); // Hook to get the available brands
   return (
     <form className="flex items-center gap-3">
       <label htmlFor="brandFilter">Brand:</label>

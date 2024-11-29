@@ -9,6 +9,5 @@ export const useGlobalState = () => {
     throw new Error('useGlobalState must be used within a HotelProvider');
   }
 
-  const { state, dispatch } = context;
-  return { state, dispatch };
+  return context;
 };

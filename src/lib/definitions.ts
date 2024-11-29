@@ -16,8 +16,7 @@ export interface GlobalState {
   brands: string[];
 }
 
-export interface HotelsContextType {
-  state: GlobalState;
+export interface HotelsContextType extends GlobalState {
   dispatch: Dispatch<StateAction>;
 }
 

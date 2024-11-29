@@ -10,10 +10,7 @@ const EditHotel = () => {
   const { id } = useParams();
 
   // Access hotels state for managing hotel data
-  const {
-    state: { hotels },
-    dispatch,
-  } = useGlobalState();
+  const { hotels, dispatch } = useGlobalState();
   const navigate = useNavigate();
 
   // Find the hotel by ID from context

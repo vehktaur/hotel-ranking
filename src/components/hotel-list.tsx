@@ -5,9 +5,7 @@ import { useGlobalState } from '../hooks/hooks';
 // Component for displaying a list of hotels
 const HotelList = () => {
   // Fetch hotels and search parameters
-  const {
-    state: { hotels },
-  } = useGlobalState();
+  const { hotels } = useGlobalState();
   const [searchParams] = useSearchParams();
 
   // Get the selected brand from the search parameters

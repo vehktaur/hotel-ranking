@@ -19,9 +19,7 @@ const HotelForm = ({
     formState: { errors },
   } = useFormContext<Hotel>(); // Access form methods from context
 
-  const {
-    state: { brands },
-  } = useGlobalState(); // Get brands from the custom hook
+  const { brands } = useGlobalState(); // Get brands from the custom hook
   const navigate = useNavigate(); //enable backwards navigation to details page
 
   return (

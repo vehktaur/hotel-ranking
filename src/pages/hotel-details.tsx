@@ -9,9 +9,7 @@ const HotelDetails = () => {
   const { name } = useParams();
   const id = name?.split('__').pop();
 
-  const {
-    state: { hotels },
-  } = useGlobalState();
+  const { hotels } = useGlobalState();
 
   const hotel = hotels.find((hotel) => hotel.id === id);
 

@@ -3,10 +3,7 @@ import AddBrand from './add-brand';
 
 // Component for managing hotel brands
 const ManageBrands = () => {
-  const {
-    state: { brands },
-    dispatch,
-  } = useGlobalState(); // Fetch brands and dispatch function from the custom hook
+  const { brands, dispatch } = useGlobalState(); // Fetch brands and dispatch function from the custom hook
 
   // Function to delete a brand and remove it from associated hotels
   const deleteBrand = (brand: string) => {
